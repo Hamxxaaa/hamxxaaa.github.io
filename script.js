@@ -19,6 +19,7 @@ const typingEl = $('#typing');
 const cursor = $('.cursor');
 const roles = [
   'Mechanical Engineer',
+  'Operations Engineer',
   'Maintenance Engineer',
   'Problem Solver',
   '2024 Engineering Graduate',
