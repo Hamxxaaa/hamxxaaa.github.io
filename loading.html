@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preparing Stream...</title>
+
+<style>
+body{
+margin:0;
+background:#000;
+color:#fff;
+font-family:Arial, Helvetica, sans-serif;
+display:flex;
+align-items:center;
+justify-content:center;
+height:100vh;
+overflow:hidden;
+}
+
+.container{
+text-align:center;
+width:90%;
+max-width:500px;
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
+letter-spacing:2px;
+margin-bottom:20px;
+color:#e50914;
+}
+
+.loading-text{
+font-size:16px;
+opacity:0.8;
+margin-bottom:25px;
+}
+
+.progress-bar{
+width:100%;
+height:6px;
+background:#222;
+border-radius:10px;
+overflow:hidden;
+margin-bottom:25px;
+}
+
+.progress{
+height:100%;
+width:0%;
+background:#e50914;
+transition:width 0.3s linear;
+}
+
+.continue-btn{
+display:inline-block;
+padding:12px 25px;
+background:#e50914;
+color:white;
+border-radius:4px;
+text-decoration:none;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+.continue-btn:hover{
+background:#ff1f1f;
+transform:scale(1.05);
+}
+
+.device{
+margin-top:15px;
+font-size:12px;
+opacity:0.5;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="logo">ENJOY YOUR FAVORITE MOVIE!</div>
+
+<div class="loading-text">
+Preparing your video... Please wait
+</div>
+
+<div class="progress-bar">
+<div class="progress" id="progress"></div>
+</div>
+
+<!-- CONTINUE BUTTON (PUT MONETAG LINK HERE) -->
+<a class="continue-btn" 
+href="YOUR_MONETAG_LINK_HERE" 
+target="_blank">
+Continue to Player
+</a>
+
+<div class="device" id="device"></div>
+
+</div>
+
+<script>
+// MOBILE DETECTION
+const device = document.getElementById("device");
+if(/Mobi|Android|iPhone/i.test(navigator.userAgent)){
+    device.innerHTML = "Mobile device detected 📱";
+}else{
+    device.innerHTML = "Desktop device detected 🖥️";
+}
+
+// PROGRESS BAR
+let progress = document.getElementById("progress");
+let width = 0;
+
+let interval = setInterval(function(){
+    width += 1;
+    progress.style.width = width + "%";
+
+    if(width >= 100){
+        clearInterval(interval);
+    }
+},100);
+
+// AUTO REDIRECT AFTER 10s (dynamic)
+const urlParams = new URLSearchParams(window.location.search);
+const video = urlParams.get('video'); // get video link from URL
+
+setTimeout(function(){
+    window.location.href = video || "fallback.html"; // redirect to video or fallback
+}, 10000);
+</script>
+
+</body>
+</html>
