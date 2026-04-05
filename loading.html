@@ -116,22 +116,23 @@ if(/Mobi|Android|iPhone/i.test(navigator.userAgent)){
 // PROGRESS BAR
 let progress = document.getElementById("progress");
 let width = 0;
-
 let interval = setInterval(function(){
     width += 1;
     progress.style.width = width + "%";
+    if(width >= 100) clearInterval(interval);
+}, 100);
 
-    if(width >= 100){
-        clearInterval(interval);
-    }
-},100);
-
-// AUTO REDIRECT AFTER 10s (dynamic)
+// AUTO REDIRECT AFTER 10s
 const urlParams = new URLSearchParams(window.location.search);
-const video = urlParams.get('video'); // get video link from URL
+let video = urlParams.get('video');
+if(video) video = decodeURIComponent(video); // decode URL safely
 
 setTimeout(function(){
-    window.location.href = video || "fallback.html"; // redirect to video or fallback
+    if(video) {
+        window.location.href = video;
+    } else {
+        alert("No video found!");
+    }
 }, 10000);
 </script>
 
