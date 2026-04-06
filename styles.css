@@ -11,24 +11,25 @@ background:black;
 color:white;
 }
 
+/* HERO SECTION */
 .hero {
-    position: relative;
-    height: 100vh;
-    overflow: hidden;
+position: relative;
+height: 100vh;
+overflow: hidden;
 }
 
 .hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: url('https://wallpapercat.com/w/full/5/e/9/720636-2560x1440-desktop-hd-the-sorcerers-stone-wallpaper-image.jpg') center/cover no-repeat;
-    filter: grayscale(10%);
-    animation: slowZoom 10s ease-in-out infinite alternate;
+content: "";
+position: absolute;
+inset: 0;
+background: url('https://wallpapercat.com/w/full/5/e/9/720636-2560x1440-desktop-hd-the-sorcerers-stone-wallpaper-image.jpg') center/cover no-repeat;
+filter: grayscale(10%);
+animation: slowZoom 10s ease-in-out infinite alternate;
 }
 
 @keyframes slowZoom {
-    from { transform: scale(1); }
-    to { transform: scale(1.15); }
+from { transform: scale(1); }
+to { transform: scale(1.15); }
 }
 
 .overlay{
@@ -38,11 +39,7 @@ left:0;
 width:100%;
 height:100%;
 background:
-linear-gradient(to right, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 35%, rgba(0,0,0,0.2) 70%, rgba(0,0,0,0.05) 100%),
-radial-gradient(circle at 15% 30%, rgba(255,255,255,0.12), transparent 40%),
-radial-gradient(circle at 80% 20%, rgba(255,255,255,0.08), transparent 40%),
-radial-gradient(circle at 20% 80%, rgba(255,255,255,0.06), transparent 40%),
-radial-gradient(circle at 85% 75%, rgba(255,255,255,0.1), transparent 40%);
+linear-gradient(to right, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 35%, rgba(0,0,0,0.2) 70%, rgba(0,0,0,0.05) 100%);
 }
 
 .content{
@@ -107,46 +104,124 @@ color:black;
 border:none;
 }
 
+/* ========================= */
+/* NETFLIX SECTION */
+/* ========================= */
+
+.section{
+padding:30px 40px;
+}
+
+.section h2{
+margin-bottom:15px;
+}
+
+/* ROW SCROLL */
+.row{
+display:flex;
+overflow-x:auto;
+overflow-y:hidden;
+gap:16px;
+scroll-behavior:smooth;
+padding-bottom:10px;
+}
+
+.row::-webkit-scrollbar{
+display:none;
+}
+
+/* CARD */
+.card{
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+border-radius:12px;
+padding:15px;
+min-width:280px;
+flex-shrink:0;
+transition:0.3s ease;
+}
+
+.card:hover{
+transform:scale(1.05);
+background:rgba(255,255,255,0.08);
+}
+
+/* TITLE */
+.movie-title{
+font-size:16px;
+font-weight:600;
+margin-bottom:10px;
+}
+
+/* ACTIONS */
+.actions{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+}
+
+.actions a{
+background:rgba(255,255,255,0.08);
+padding:6px 10px;
+border-radius:6px;
+font-size:13px;
+text-decoration:none;
+color:white;
+transition:0.2s;
+}
+
+.actions a:hover{
+background:#e50914;
+}
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
 @media(max-width:768px){
+
 h1{
 font-size:2.4rem;
 }
+
 .content{
 left:5%;
 right:5%;
 }
+
+/* card responsive */
+.card{
+min-width:85%;
 }
 
-/* MOBILE RESPONSIVE FIX */
-@media (max-width: 768px) {
-
-.card {
-    min-width: 85%;
-    max-width: 85%;
+/* stack buttons */
+.actions{
+flex-direction:column;
+gap:6px;
 }
 
-.actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    justify-content: flex-start;
+.actions a{
+width:100%;
+text-align:center;
+padding:10px;
+font-size:14px;
 }
 
-.actions .btn,
-.play-english,
-.play-hindi,
-.download {
-    font-size: 12px;
-    padding: 6px 8px;
-    white-space: nowrap;
+.section{
+padding:20px;
 }
 
-.sep {
-    display: none; /* hide | separators on mobile */
 }
 
-.movie-title {
-    font-size: 14px;
+/* EXTRA SMALL */
+@media(max-width:480px){
+
+.card{
+min-width:92%;
+}
+
+.section{
+padding:15px;
 }
 
 }
