@@ -105,7 +105,7 @@ border:none;
 }
 
 /* ========================= */
-/* NETFLIX SECTION */
+/* MOVIE LIST SECTION */
 /* ========================= */
 
 .section{
@@ -113,64 +113,40 @@ padding:30px 40px;
 }
 
 .section h2{
-margin-bottom:15px;
+margin-bottom:20px;
 }
 
-/* ROW SCROLL */
-.row{
-display:flex;
-overflow-x:auto;
-overflow-y:hidden;
-gap:16px;
-scroll-behavior:smooth;
-padding-bottom:10px;
-}
-
-.row::-webkit-scrollbar{
-display:none;
-}
-
-/* CARD */
-.card{
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(10px);
-border-radius:12px;
-padding:15px;
-min-width:280px;
-flex-shrink:0;
-transition:0.3s ease;
-}
-
-.card:hover{
-transform:scale(1.05);
-background:rgba(255,255,255,0.08);
+/* MOVIE CARD */
+.movie-card{
+padding:18px 0;
+border-bottom:1px solid rgba(255,255,255,0.1);
 }
 
 /* TITLE */
-.movie-title{
+.movie-heading{
 font-size:16px;
 font-weight:600;
 margin-bottom:10px;
 }
 
-/* ACTIONS */
-.actions{
+/* BUTTONS */
+.movie-buttons{
 display:flex;
-gap:8px;
+gap:12px;
 flex-wrap:wrap;
 }
 
-.actions a{
+.movie-buttons a{
 background:rgba(255,255,255,0.08);
-padding:6px 10px;
+padding:8px 14px;
 border-radius:6px;
-font-size:13px;
 text-decoration:none;
 color:white;
+font-size:14px;
 transition:0.2s;
 }
 
-.actions a:hover{
+.movie-buttons a:hover{
 background:#e50914;
 }
 
@@ -189,39 +165,32 @@ left:5%;
 right:5%;
 }
 
-/* card responsive */
-.card{
-min-width:85%;
+.section{
+padding:20px;
 }
 
 /* stack buttons */
-.actions{
+.movie-buttons{
 flex-direction:column;
-gap:6px;
 }
 
-.actions a{
+.movie-buttons a{
 width:100%;
 text-align:center;
-padding:10px;
-font-size:14px;
-}
-
-.section{
-padding:20px;
 }
 
 }
 
 /* EXTRA SMALL */
-@media(max-width:480px){
 
-.card{
-min-width:92%;
-}
+@media(max-width:480px){
 
 .section{
 padding:15px;
+}
+
+.movie-heading{
+font-size:15px;
 }
 
 }
