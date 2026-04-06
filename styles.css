@@ -117,3 +117,36 @@ right:5%;
 }
 }
 
+/* MOBILE RESPONSIVE FIX */
+@media (max-width: 768px) {
+
+.card {
+    min-width: 85%;
+    max-width: 85%;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: flex-start;
+}
+
+.actions .btn,
+.play-english,
+.play-hindi,
+.download {
+    font-size: 12px;
+    padding: 6px 8px;
+    white-space: nowrap;
+}
+
+.sep {
+    display: none; /* hide | separators on mobile */
+}
+
+.movie-title {
+    font-size: 14px;
+}
+
+}
