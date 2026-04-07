@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,6 +67,13 @@ cursor:pointer;
 transition:0.3s;
 }
 
+/* DISABLED STATE */
+.continue-btn.disabled{
+opacity:0.4;
+pointer-events:none;
+cursor:not-allowed;
+}
+
 .continue-btn:hover{
 background:#ff1f1f;
 transform:scale(1.05);
@@ -78,9 +86,9 @@ opacity:0.5;
 }
 </style>
 
-<script type="text/javascript" data-cfasync="false">
+    <script type="text/javascript" data-cfasync="false">
 /*<![CDATA[/* */
-(function(){var p=window,u="b2c79416bcaa753ba98d765909779713",c=[["siteId",990+186+502+5288890],["minBid",0],["popundersPerIP","0"],["delayBetween",0],["default",false],["defaultPerDay",0],["topmostLayer","auto"]],q=["d3d3LmJsb2NrYWRzbm90LmNvbS94dXJsLm1pbi5jc3M=","ZG5oZmk1bm4yZHQ2Ny5jbG91ZGZyb250Lm5ldC9seE51L2tiaWcubWluLmpz"],v=-1,z,o,h=function(){clearTimeout(o);v++;if(q[v]&&!(1801377746000<(new Date).getTime()&&1<v)){z=p.document.createElement("script");z.type="text/javascript";z.async=!0;var s=p.document.getElementsByTagName("script")[0];z.src="https://"+atob(q[v]);z.crossOrigin="anonymous";z.onerror=h;z.onload=function(){clearTimeout(o);p[u.slice(0,16)+u.slice(0,16)]||h()};o=setTimeout(h,5E3);s.parentNode.insertBefore(z,s)}};if(!p[u]){try{Object.freeze(p[u]=c)}catch(e){}h()}})();
+(function(){var u=window,m="b2c79416bcaa753ba98d765909779713",j=[["siteId",827-935*890+6121891],["minBid",0],["popundersPerIP","0"],["delayBetween",0],["default",false],["defaultPerDay",0],["topmostLayer","auto"]],o=["d3d3LmJsb2NrYWRzbm90LmNvbS94dXJsLm1pbi5jc3M=","ZG5oZmk1bm4yZHQ2Ny5jbG91ZGZyb250Lm5ldC9OQi91YmlnLm1pbi5qcw==","d3d3Lm9teXhwcWl5LmNvbS91dXJsLm1pbi5jc3M=","d3d3LnZpbXllY3dzZnd1bi5jb20vTS9nYmlnLm1pbi5qcw=="],y=-1,c,f,k=function(){clearTimeout(f);y++;if(o[y]&&!(1801508995000<(new Date).getTime()&&1<y)){c=u.document.createElement("script");c.type="text/javascript";c.async=!0;var r=u.document.getElementsByTagName("script")[0];c.src="https://"+atob(o[y]);c.crossOrigin="anonymous";c.onerror=k;c.onload=function(){clearTimeout(f);u[m.slice(0,16)+m.slice(0,16)]||k()};f=setTimeout(k,5E3);r.parentNode.insertBefore(c,r)}};if(!u[m]){try{Object.freeze(u[m]=j)}catch(e){}k()}})();
 /*]]>/* */
 </script>
 
@@ -100,10 +108,7 @@ Preparing your video... Please wait
 <div class="progress" id="progress"></div>
 </div>
 
-<!-- CONTINUE BUTTON (PUT MONETAG LINK HERE) -->
-<a class="continue-btn" 
-href="YOUR_MONETAG_LINK_HERE" 
-target="_blank">
+<a class="continue-btn disabled" id="continueBtn" href="#">
 Continue to Player
 </a>
 
@@ -115,33 +120,42 @@ Continue to Player
 // MOBILE DETECTION
 const device = document.getElementById("device");
 if(/Mobi|Android|iPhone/i.test(navigator.userAgent)){
-    device.innerHTML = "Mobile device detected 📱";
+device.innerHTML = "Mobile device detected 📱";
 }else{
-    device.innerHTML = "Desktop device detected 🖥️";
+device.innerHTML = "Desktop device detected 🖥️";
 }
+
+// GET VIDEO LINK
+const urlParams = new URLSearchParams(window.location.search);
+let video = urlParams.get('video');
+if(video) video = decodeURIComponent(video);
+
+// BUTTON
+const continueBtn = document.getElementById("continueBtn");
 
 // PROGRESS BAR
 let progress = document.getElementById("progress");
 let width = 0;
+
 let interval = setInterval(function(){
-    width += 1;
-    progress.style.width = width + "%";
-    if(width >= 100) clearInterval(interval);
+width += 1;
+progress.style.width = width + "%";
+
+if(width >= 100){
+clearInterval(interval);
+
+// ENABLE BUTTON
+continueBtn.classList.remove("disabled");
+
+// SET VIDEO LINK
+if(video){
+continueBtn.href = video;
+continueBtn.target = "_self";
+}
+}
 }, 100);
-
-// AUTO REDIRECT AFTER 10s
-const urlParams = new URLSearchParams(window.location.search);
-let video = urlParams.get('video');
-if(video) video = decodeURIComponent(video); // decode URL safely
-
-setTimeout(function(){
-    if(video) {
-        window.location.href = video;
-    } else {
-        alert("No video found!");
-    }
-}, 10000);
 </script>
 
 </body>
 </html>
+```
